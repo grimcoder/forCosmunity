@@ -4,8 +4,9 @@ var Posts = require("./Posts")
 
 var UserBox = {
     view: function (vnode) {
-        return m("img", {src: vnode.attrs.url } )
-    }
+        return m("span", {class: 'fl w-45 pa2 black '},
+            [ m("img", {src: vnode.attrs.url } )]
+        )}
 }
 
 var Main = {
@@ -13,7 +14,7 @@ var Main = {
     view: function() {
 
         var posts = Posts.list;
-        var users = ['59597afba370ad00586a14ad','59597b08a370ad00586a1613']
+        var users = ['59597afba370ad00586a14ad','59597b08a370ad00586a1613'] // users ids that have userpics
         var owners = users.map((u)=>{
             var tmp = posts.filter((p)=>{return p.ownerId == u});
             return tmp.length > 0 ? tmp[0] : undefined;
